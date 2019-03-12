@@ -1,0 +1,15 @@
+{
+    "name": "@alessiodf/round-monitor",
+    "version": "1.0.0",
+    "description": "Round Monitor for Ark-powered blockchains",
+    "homepage": "https://github.com/alessiodf/round-monitor",
+    "main": "lib/index.js",
+    "author": "alessiodf",
+    "license": "GPL-3.0",
+    "dependencies": {
+        "@arkecosystem/core-http-utils": "^2.2.0",
+        "@arkecosystem/crypto": "^2.2.0",
+        "execa": "^1.0.0",
+        "path": "^0.12.7"
+    }
+}
