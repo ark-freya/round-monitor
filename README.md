@@ -19,11 +19,9 @@ The logging options are configurable and the HTTP server is only accessible on t
 
 ## Installation
 
-Ensure you have [added a valid SSH key to your GitHub profile](https://help.github.com/en/articles/adding-a-new-ssh-key-to-your-github-account) before starting as this is a private repository and `yarn` does not allow interactive entry of username/password credentials. It is also necessary to add the GitHub SSH server's public key to the `known_hosts` file if you have never connected to GitHub.com via SSH before, otherwise `yarn` will be unable to access the remote repository. To do this, run `ssh-keyscan -t rsa github.com > ~/.ssh/known_hosts`.
-
 Execute the following:
 
-```yarn global add ssh://git@github.com/alessiodf/round-monitor```
+```yarn global add @alessiodf/round-monitor```
 
 Once the plugin is installed, we must configure it by modifying `plugins.js`. This file is found in `~/.config/ark-core/{mainnet|devnet|testnet|unitnet}/plugins.js` depending on network.
 
