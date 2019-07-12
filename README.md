@@ -91,9 +91,12 @@ If you no longer wish to restart, and the restart has not yet been executed, you
 
 Please remember that you can only access these endpoints from your local server and not remotely.
 
-If you wish to safely restart after updating Core, use the `--no-restart` flag when updating (`ark update --no-restart`) to update Core without restarting the process afterwards. When this is complete, execute a safe restart as per the above instructions.
-
 The restart procedure restarts the Core, Relay and Forger processes, if they are running.
+
+## Safe Updating of Core
+
+If you wish to safely update Core, pass the `--no-restart` flag to the `ark update` command to update Core without restarting the process afterwards. When this is complete, execute a safe restart as per the above instructions. The whole process can be automated by also passing the `--force` flag to the `ark update` command like so: `ark update --force --no-restart && curl --request POST http://127.0.0.1:5001/restart`.
+
 
 ## Credits
 
@@ -103,3 +106,4 @@ The restart procedure restarts the Core, Relay and Forger processes, if they are
 ## License
 
 [GPLv3](LICENSE) © [alessiodf](https://github.com/alessiodf)
+
