@@ -97,7 +97,7 @@ The restart procedure restarts the Core, Relay and Forger processes, if they are
 
 If you wish to safely update Core using the CLI, pass the `--no-restart` flag to the `ark update` command to update Core without restarting the process afterwards. When this is complete, execute a safe restart as per the above instructions. The whole process can be automated by also passing the `--force` flag to the `ark update` command like so: `ark update --force --no-restart ; curl --request POST http://127.0.0.1:5001/restart`.
 
-If using Core Control, run `ccontrol update core ; ccontrol restart safe`.
+If using Core Control, run `ccontrol update core` which will automatically initiate a safe restart if the plugin is enabled and both Relay and Forger processes are running.
 
 ## Credits
 
