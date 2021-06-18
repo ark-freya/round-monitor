@@ -65,17 +65,17 @@ Some example log lines are as follows:
 
 This tells us that `alessio` is 8 seconds away from the opening of its forging slot, that we are currently 11 delegates into the current round of 51, that the next three forgers are `geops`, `alessio` and `arktoshi` and that the round is due to end in 5 minutes and 20 seconds.
 
-```INFO : Time until we forge: 6m 40s (alessio) ✅ [6m 40s] [13/51: espresso/echo/boldninja] [5m 4s]```
+```INFO : Time until we forge: 6m 40s (alessio) ✅ [6m 40s] [13/51: cactus1549/echo/brohan] [5m 4s]```
 
 The check mark shows that `alessio` forged successfully in this round and the block has been received and accepted by the local relay node.
 
 You may be wondering why we might forge again in 6 minutes and 40 seconds since we've already forged in the round and the round is scheduled to end in only 5 minutes and 4 seconds. That is because the round end time is only an estimate as it depends on 51 delegates (in the case of ARK) forging successfully, so, in theory, if several other delegates miss their blocks, the round time will be extended for each delegate that misses its block, so we could get to forge again in the same round.
 
-```INFO : Time until we forge: 3m 28s (alessio) ❌ [3m 28s] [34/51: cam/mililiter/kaos] [2m 16s]```
+```INFO : Time until we forge: 3m 28s (alessio) ❌ [3m 28s] [34/51: cams_yellow_jacket/blues_for_alice/kaos] [2m 16s]```
 
 The cross tells us that our local relay node did not receive a block from `alessio` when it was expected, which is indicative that we did not forge successfully.
 
-```INFO : Time until we forge: 3m 44s (alessio) ✅ [3m 44s] [46/51: dark_jamie/friendsoflittleyus/the_bobbie_bunch] [40s] [Waiting to restart]```
+```INFO : Time until we forge: 3m 44s (alessio) ✅ [3m 44s] [46/51: bigfriendlymaniac/friendsoflittleyus/fun] [40s] [Waiting to restart]```
 
 We have requested a restart but it is not safe to do so yet, so we are waiting. In this case it is not safe to restart even though we have already forged in the round because the round is due to end in approximately 40 seconds, and we don't know where we will appear in the following round, so the restart may not complete in time if we forge early in the next round.
 

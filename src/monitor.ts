@@ -31,6 +31,7 @@ export class Monitor {
     private restartRequested!: boolean;
     private roundSlot!: number;
     private slot!: number;
+    private timer!: ReturnType<typeof setTimeout>;
 
     private blockTimeLookup;
 
@@ -178,8 +179,9 @@ export class Monitor {
             if (!delegate.publicKey && delegate.name) {
                 try {
                     const wallet: Contracts.State.Wallet = this.walletRepository.findByUsername(delegate.name);
-                    if (wallet.publicKey) {
-                        delegate.publicKey = wallet.publicKey;
+                    const publicKey: string | undefined = wallet.getPublicKey();
+                    if (publicKey) {
+                        delegate.publicKey = publicKey;
                     }
                 } catch {
                     //
@@ -215,13 +217,13 @@ export class Monitor {
         const slot: number = Crypto.Slots.getSlotNumber(this.blockTimeLookup);
 
         if (slot === this.slot) {
-            return;
+            return this.wait();
         }
 
         this.slot = slot;
 
         if (Crypto.Slots.getSlotNumber(this.blockTimeLookup, lastBlockData.timestamp) === this.slot) {
-            return this.processNextSlot();
+            return this.wait();
         }
 
         const blockTime: number = Managers.configManager.getMilestone(lastBlockData.height).blocktime;
@@ -365,11 +367,7 @@ export class Monitor {
             this.logger.info(output.trim());
         }
 
-        return this.processNextSlot();
-    }
-
-    private async processNextSlot(): Promise<void> {
-        setTimeout(() => this.process(), Crypto.Slots.getTimeInMsUntilNextSlot(this.blockTimeLookup));
+        return this.wait();
     }
 
     private async restart(): Promise<void> {
@@ -405,5 +403,10 @@ export class Monitor {
 
         await this.app.terminate();
         process.exit();
+    }
+
+    private async wait(): Promise<void> {
+        clearTimeout(this.timer);
+        this.timer = setTimeout(() => this.process(), 500);
     }
 }
