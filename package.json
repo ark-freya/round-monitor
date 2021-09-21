@@ -2,14 +2,15 @@
     "name": "@alessiodf/round-monitor",
     "description": "Round Monitor for ARK Core",
     "homepage": "https://github.com/alessiodf/round-monitor",
-    "version": "1.3.0-next.2",
+    "version": "1.3.0",
     "contributors": [
         "alessiodf <alessiodf@pm.me>"
     ],
     "license": "GPL-3.0-or-later",
     "main": "dist/index.js",
     "files": [
-        "dist"
+        "dist/*.js",
+        "dist/server/*.js"
     ],
     "scripts": {
         "prepublishOnly": "yarn pretest",
@@ -21,6 +22,6 @@
         "lint": "../../node_modules/eslint/bin/eslint.js 'src/**/*.ts' --fix"
     },
     "devDependencies": {
-        "@arkecosystem/core": "^3.0.0-next.30"
+        "@arkecosystem/core": "^3.0.0 || ^3.0.0-next.0"
     }
 }
